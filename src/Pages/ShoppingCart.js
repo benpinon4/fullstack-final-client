@@ -1,18 +1,20 @@
 import ShoppingCartProductCard from "../Components/ShoppingCartProductCard"
 import { Button } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
 
 const ShoppingCartPage = (props) => {
 
-    const {shoppingCartProductList, handleAddFromShoppingCart, handleDeleteProductfromCart, cartTotal, setShoppingCartProductList} = props
+    const {shoppingCartProductList, handleAddFromShoppingCart, handleDeleteProductfromCart, cartTotal, setShoppingCartProductList, handleCreatePurchaseOrder} = props
 
-
+    const navigate = useNavigate()
     
     return (
         <div>Shopping Cart
             <br></br>
             Cart Total: ${cartTotal.toFixed(2)}
             <Button onClick={()=>{
-
+                navigate("/order-review")
+                handleCreatePurchaseOrder(shoppingCartProductList)
             }}>Purchase</Button>
             <Button onClick={()=>{
                 setShoppingCartProductList([])

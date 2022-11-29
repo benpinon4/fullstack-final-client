@@ -2,10 +2,14 @@ import { Outlet } from "react-router-dom"
 import NavBar from "../Components/NavBar"
 
 
-const GlobalLayout = () => {
+const GlobalLayout = (props) => {
+
+   const {setUserData} = props
+
+   
    return (
     <div>
-    <NavBar />
+    <NavBar setUserData={setUserData} />
     <Outlet />
     </div>
    )

@@ -5,13 +5,13 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 
-const NavBar = () => {
+const NavBar = (props) => {
 const auth = useAuth()
 const urlEndpoint = process.env.REACT_APP_URL_ENDPOINT;
 const navigate = useNavigate()
     const [loginStatusMessage, setLoginStatusMessage] = useState("Logged Out")
     const [userStatusMessage, setUserStatusMessage] = useState("")
-
+    const {setUserData} = props
 
     useEffect(()=>{
         const fetchMessage = async () => {
@@ -23,9 +23,10 @@ const navigate = useNavigate()
                 }
             })
             const responseJSON = await response.json()
-
+            console.log(responseJSON)
             setLoginStatusMessage(responseJSON.message)
             setUserStatusMessage(responseJSON.verified.userData.email)
+            setUserData(responseJSON.verified.userData)
 
         }
 
@@ -42,7 +43,9 @@ const navigate = useNavigate()
         
         <div>
             <div>
-               {loginStatusMessage} {userStatusMessage} 
+                {/* {loginStatusMessage && userStatusMessage && <h4>{loginStatusMessage}: {userStatusMessage}</h4> }
+                {loginStatusMessage || userStatusMessage === undefined && <h4>Logged Out</h4> }
+             */}
             </div>
             <div>
                 <Button onClick={()=>{

@@ -7,24 +7,24 @@ const ShoppingCartProductCard = (props) => {
     const {product, handleAddFromShoppingCart, handleDeleteProductfromCart, shoppingCartProductList } = props
 
 
-    let yesNo = ""
-    let count = 0
+    // let yesNo = ""
+    // let count = 0
     //Item Count Functionality
 
-    for (let i = 0; i < shoppingCartProductList.length; i++){
-        yesNo = "yes"
+    // for (let i = 0; i < shoppingCartProductList.length; i++){
+    //     yesNo = "yes"
 
-    if(shoppingCartProductList[i].title === product.title){
-        yesNo = "yes"
-    }
-    if(shoppingCartProductList[i].title !== product.title){
-        yesNo = "no"
-    }
-    if(yesNo === "yes"){
-        count++
-    }
-    }
-    console.log(count)
+    // if(shoppingCartProductList[i].title === product.title){
+    //     yesNo = "yes"
+    // }
+    // if(shoppingCartProductList[i].title !== product.title){
+    //     yesNo = "no"
+    // }
+    // if(yesNo === "yes"){
+    //     count++
+    // }
+    // }
+    // console.log(count)
 
 
 
@@ -34,13 +34,13 @@ const ShoppingCartProductCard = (props) => {
 
 
 
-    if(product.render === false) {
-        return(
-          <></>
-        )
-    }
+    // if(product.render === false) {
+    //     return(
+    //       <></>
+    //     )
+    // }
 
-    if(product.render === undefined){
+    // if(product.render === undefined){
         return(
             
             <div className="shoppingListCard-container">
@@ -49,7 +49,7 @@ const ShoppingCartProductCard = (props) => {
             <img src={product.image}></img>
             <p>${product.price}</p>
             <div className="itemQuantityAdjuster-container">
-            <label>Quantity: {count}</label>
+            <label>Quantity: {product.quantity}</label>
             <div className="itemQuantityButtonsAdjuster-container">
             <Button onClick={()=>{
                 // itemCount()
@@ -74,7 +74,7 @@ const ShoppingCartProductCard = (props) => {
     )
 
     
-    }
+    // }
 
 }
 
