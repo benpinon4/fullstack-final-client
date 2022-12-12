@@ -9,7 +9,7 @@ const HomePage = () => {
 
     return(
 
-        <div>
+        <div className="text-center">
            Welcome To Our Store
           
 

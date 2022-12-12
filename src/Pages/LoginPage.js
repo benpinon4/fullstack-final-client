@@ -3,7 +3,7 @@ import Login from "../Components/Login"
 
 const LoginPage = ()=>{
     return(
-        <div>
+        <div className="flex justify-center">
             <Login />
         </div>
     )

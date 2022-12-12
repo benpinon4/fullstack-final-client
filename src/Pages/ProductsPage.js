@@ -1,8 +1,10 @@
 import ProductCard from "../Components/ProductCard";
+import ShoppingCartPage from "./ShoppingCart";
 import { useState, useEffect } from "react";
+import ShoppingCartSummary from "../Components/ShoppingCartSummary.js";
 
 const ProductsPage = (props) => {
-  const { handleAddProducttoCart } = props;
+  const { handleAddProducttoCart, cartTotal, shoppingCartProductList } = props;
 
   const [productList, setProductList] = useState([]);
 
@@ -25,18 +27,33 @@ const ProductsPage = (props) => {
   }, []);
 
   return (
-    <div>
-      Products Page
-      <div className="productsList-container">
+    <div className="flex justify-content">
+
+    <div className="flex row w-100">
+
+      <div className="text-center">
+           Products Page
+      </div>
+      <div>
+      <div className="mx-10 w-100 sm:flex-row md:flex column  justify-center flex-wrap border-solid ">
         {productList.map((product, index) => {
           return (
-            <ProductCard
+            <ProductCard 
               key={index}
               product={product}
               handleAddProducttoCart={handleAddProducttoCart}
             />
           );
         })}
+      </div>
+      </div>
+
+      
+
+      
+    </div>
+    <div className="w-">
+      <ShoppingCartSummary cartTotal={cartTotal} shoppingCartProductList={shoppingCartProductList} />
       </div>
     </div>
   );

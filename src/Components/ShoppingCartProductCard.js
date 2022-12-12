@@ -43,20 +43,26 @@ const ShoppingCartProductCard = (props) => {
     // if(product.render === undefined){
         return(
             
-            <div className="shoppingListCard-container">
-                
-            <h4>{product.title}</h4>
-            <img src={product.image}></img>
+            <div className="shoppingListCard-container flex justify-between h-1/4 border-2">
+              <div className="">
+      
+              <p>{product.title}</p>
+            
+                    <div className="">
+                        <img className="h-20" src={product.image}></img> 
+                    </div>
+                </div>  
+
             <p>${product.price}</p>
-            <div className="itemQuantityAdjuster-container">
-            <label>Quantity: {product.quantity}</label>
+            
+            
             <div className="itemQuantityButtonsAdjuster-container">
-            <Button onClick={()=>{
+            <button onClick={()=>{
                 // itemCount()
                 handleAddFromShoppingCart(product)                
-            }}>+</Button>
+            }}>+</button>
             <br></br>
-            <Button onClick={()=>{
+            <button onClick={()=>{
                 // if(itemQuantity < 1){
                 //     setItemQuantiy(0)
                 // }
@@ -65,9 +71,11 @@ const ShoppingCartProductCard = (props) => {
                     handleDeleteProductfromCart(product)
                 // }
                 
-            }}>-</Button>
+            }}>-</button>
             
             </div>
+            <div className="itemQuantityAdjuster-container">
+            <label>Quantity: {product.quantity}</label>
             </div>
 
         </div>

@@ -1,4 +1,6 @@
-.App {
+
+
+/* .App {
   text-align: center;
 }
 
@@ -88,3 +90,28 @@
   margin-top: 20px;
   font-size: large;
 }
+
+.navBar {
+  height: 200px;
+  border-bottom: solid 1px rgb(6, 5, 5);
+  background-color: rgb(114, 118, 118);
+  /* display: flex; */
+  
+/* }
+
+.link-container {
+  
+
+}
+
+.shipping-info-input-container {
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+.link {
+  text-decoration: none;
+  color: white
+} */ 

@@ -1,42 +1,111 @@
-import ShoppingCartProductCard from "../Components/ShoppingCartProductCard"
-import { Button } from "react-bootstrap"
-import { useNavigate } from "react-router-dom"
+import ShoppingCartProductCard from "../Components/ShoppingCartProductCard";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const ShoppingCartPage = (props) => {
+  const {
+    shoppingCartProductList,
+    handleAddFromShoppingCart,
+    handleDeleteProductfromCart,
+    cartTotal,
+    setShoppingCartProductList,
+    userData,
+    setnocompleteOrder,
+  } = props;
 
-    const {shoppingCartProductList, handleAddFromShoppingCart, handleDeleteProductfromCart, cartTotal, setShoppingCartProductList, handleCreatePurchaseOrder} = props
+  const urlEndpoint = process.env.REACT_APP_URL_ENDPOINT;
+  const navigate = useNavigate();
 
-    const navigate = useNavigate()
-    
-    return (
-        <div>Shopping Cart
-            <br></br>
-            Cart Total: ${cartTotal.toFixed(2)}
-            <Button onClick={()=>{
-                navigate("/order-review")
-                handleCreatePurchaseOrder(shoppingCartProductList)
-            }}>Purchase</Button>
-            <Button onClick={()=>{
-                setShoppingCartProductList([])
-            }}>Empty Cart</Button>
-        <div className="shoppingCartList-container">
-        
-            {shoppingCartProductList.length < 1 && <h3>No Items in Cart</h3>}
-            
-            {shoppingCartProductList.length >= 1 && <div> {shoppingCartProductList.map((product, index)=>{
-                
-                return(
-                <ShoppingCartProductCard key={index} product={product} handleAddFromShoppingCart={handleAddFromShoppingCart} handleDeleteProductfromCart={handleDeleteProductfromCart}
-                shoppingCartProductList={shoppingCartProductList}/>)
-              
+  const handleCreatePurchaseOrder = (CartList) => {
+    const purchaseOrder = {
+      iscomplete: false,
+      userID: userData.userID,
+      userEmail: userData.email,
+      cartTotal: cartTotal,
+      date: new Date(),
+      items: CartList.map((item) => {
+        const returnObject = {
+          itemID: item.id,
+          image: item.image,
+          quantity: item.quantity,
+        };
+        return returnObject;
+      }),
+    };
+
+    handleCreateOrder(purchaseOrder);
+  };
+
+  const handleCreateOrder = async (order) => {
+    const orderResponse = await fetch(`${urlEndpoint}/orders/create-order`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        order,
+      }),
+    });
+
+    const payloadResponse = await orderResponse.json();
+    console.log(payloadResponse);
+    setnocompleteOrder(payloadResponse);
+  };
+
+  return (
+    <div className="flex column justify-center">
+      <div className="shoppingCartList-container w-3/4 flex justify-center">
+        {shoppingCartProductList.length < 1 && <h3>No Items in Cart</h3>}
+
+        {shoppingCartProductList.length >= 1 && (
+          <div>
+            {" "}
+            {shoppingCartProductList.map((product, index) => {
+              return (
+                <ShoppingCartProductCard
+                  key={index}
+                  product={product}
+                  handleAddFromShoppingCart={handleAddFromShoppingCart}
+                  handleDeleteProductfromCart={handleDeleteProductfromCart}
+                  shoppingCartProductList={shoppingCartProductList}
+                />
+              );
             })}
-            </div>}
-           
-        </div>
-
+          </div>
+        )}
+      </div>
+      <div className="border-2 w-1/4  bg-gray-100">
+        <div className="border-2 mt-20 bg-white mx-2 px-2">
+          <div>
+            Shopping Cart Summary
+          </div>
+        
+        <br></br>
+        Cart Total: ${cartTotal.toFixed(2)}
+        <div className="flex row justify-center">
+          <button className="border-2 "
+            onClick={() => {
+              navigate("/shipping-billing");
+              handleCreatePurchaseOrder(shoppingCartProductList);
+            }}
+          >
+            Proceed to Checkout
+          </button>
+          
+          <button className="border-2"
+            onClick={() => {
+              setShoppingCartProductList([]);
+            }}
+          >
+            Empty Cart
+          </button>
         </div>
         
-    )
-}
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default ShoppingCartPage
+export default ShoppingCartPage;

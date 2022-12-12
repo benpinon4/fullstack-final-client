@@ -10,23 +10,27 @@ import LoginPage from "./Pages/LoginPage";
 import RegistrationPage from "./Pages/RegistrationPage";
 import { useState } from "react";
 import OrderPage from "./Pages/OrderPage";
+import ShippingBillingPage from "./Pages/ShippingBillingPage";
 
 
 function App() {
   const [shoppingCartProductList, setShoppingCartProductList] = useState([]);
   const [userData, setUserData] = useState({})
-  const [order, setOrder] = useState({})
+  const[shippingInfo, setShippingInfo] = useState([])
+  const[billingInfo, setBillingInfo] = useState([])
+  const [nocompleteOrder, setnocompleteOrder] = useState({})
+
    
   
 
   const handleAddProducttoCart = (product) => {
     const productQuantity = product.quantity
-    console.log(productQuantity)
+  
     const titleCheck = (element) => {
       return element.title === product.title;
     };
     const titleCheck1= shoppingCartProductList.some(titleCheck)
-    console.log(titleCheck1)
+
     if (shoppingCartProductList.some(titleCheck) !== true) {
 
       let addProduct = {
@@ -44,16 +48,15 @@ function App() {
         ...shoppingCartProductList, addProduct
         
       ]);
-      console.log(addProduct.quantity)
-      console.log(titleCheck1)
+
     }
 
-    console.log(titleCheck1)
+
     if (shoppingCartProductList.some(titleCheck) === true) {
       const indexAdd = shoppingCartProductList.findIndex((cartProduct) => {
         return cartProduct.title === product.title;
       });
-      console.log(titleCheck1)
+
       let addRenderProduct = {
         id: product.id,
         title: product.title,
@@ -66,11 +69,6 @@ function App() {
 
       };
 
-      console.log(addRenderProduct)
-
-      console.log(product.quantity)
-
-      console.log(addRenderProduct);
       const updatedShoppingCart = [...shoppingCartProductList];
 
       const spliceShopCart = updatedShoppingCart.splice(
@@ -78,25 +76,24 @@ function App() {
         1,
         addRenderProduct
       );
-      console.log(spliceShopCart);
+
 
       setShoppingCartProductList(updatedShoppingCart);
     }
-    console.log(titleCheck1)
+
   };
 
 
   const handleDeleteProductfromCart = (product) => {
     const indexToDelete = shoppingCartProductList.findIndex((cartProduct) => {
-      console.log(cartProduct.title);
-      console.log(product.title);
+
       return cartProduct.title === product.title;
     });
 
     const updatedShoppingCart = [...shoppingCartProductList];
 
     if (product.quantity > 1) {
-      console.log(indexToDelete);
+
 
       let deleteRenderProduct = {
         id: product.id,
@@ -115,7 +112,6 @@ function App() {
         deleteRenderProduct
       );
 
-      console.log(updatedShoppingCart);
 
       setShoppingCartProductList(updatedShoppingCart);
       return;
@@ -144,7 +140,6 @@ function App() {
       quantity: Number(product.quantity + 1),
     };
 
-    console.log(addRenderProduct);
     const updatedShoppingCart = [...shoppingCartProductList];
 
     const spliceShopCart = updatedShoppingCart.splice(
@@ -152,7 +147,6 @@ function App() {
       1,
       addRenderProduct
     );
-    console.log(spliceShopCart);
 
     setShoppingCartProductList(updatedShoppingCart);
   };
@@ -163,34 +157,9 @@ function App() {
     cartTotal = cartTotal + shoppingCartProductList[i].price*shoppingCartProductList[i].quantity;
   }
 
-  const handleCreatePurchaseOrder = (CartList) => {
-
-    
-    console.log(CartList)
-    
-    console.log(userData)
-
-    const purchaseOrder = {
-      userID: userData.userID,
-      userEmail: userData.email,
-      date: new Date(),
-      items: CartList.map((item)=>{
-        const returnObject = {
-          itemID: item.id,
-          quantity: item.quantity
-        }
-        return returnObject
-      }),
   
-    
-    }
-    setOrder(purchaseOrder)
-    console.log(purchaseOrder)
 
 
-  };
-
-  console.log(shoppingCartProductList);
 
   const router = createBrowserRouter([
     {
@@ -213,7 +182,7 @@ function App() {
         {
           path: "/products",
           element: (
-            <ProductsPage handleAddProducttoCart={handleAddProducttoCart} />
+            <ProductsPage handleAddProducttoCart={handleAddProducttoCart} cartTotal={cartTotal} shoppingCartProductList={shoppingCartProductList}/>
           ),
         },
         {
@@ -225,14 +194,21 @@ function App() {
               handleDeleteProductfromCart={handleDeleteProductfromCart}
               cartTotal={cartTotal}
               setShoppingCartProductList={setShoppingCartProductList}
-              handleCreatePurchaseOrder={handleCreatePurchaseOrder}
+              userData={userData}
+              setnocompleteOrder={setnocompleteOrder}
             />
+          ),
+        },
+        {
+          path: "/shipping-billing",
+          element: (
+            <ShippingBillingPage userData={userData} nocompleteOrder={nocompleteOrder} setShippingInfo={setShippingInfo} setBillingInfo={setBillingInfo} shippingInfo={shippingInfo} billingInfo={billingInfo}  />
           ),
         },
         {
           path: "/order-review",
           element: (
-            <OrderPage shoppingCartProductList={shoppingCartProductList}     order={order}/>
+            <OrderPage nocompleteOrder={nocompleteOrder} shippingInfo={shippingInfo} billingInfo={billingInfo} />
           ),
         },
       ],

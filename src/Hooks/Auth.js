@@ -85,6 +85,7 @@ const registerUser = async (email, password) => {
   });
   const responseJSON = await response.json();
   return responseJSON;
+  
 };
 
 const loginUser = async (email, password) => {

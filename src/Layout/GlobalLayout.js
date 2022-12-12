@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import NavBar from "../Components/NavBar"
+import NavigationBar from "../Components/NavBar"
 
 
 const GlobalLayout = (props) => {
@@ -9,7 +9,7 @@ const GlobalLayout = (props) => {
    
    return (
     <div>
-    <NavBar setUserData={setUserData} />
+    <NavigationBar setUserData={setUserData} />
     <Outlet />
     </div>
    )
