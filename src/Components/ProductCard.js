@@ -9,13 +9,16 @@ const ProductCard = (props) => {
 
 
     return(
-        <div className="productCard-container w-3/4 ms-2 rounded-2xl bg-gray-100 flex flex-col justify-center md:w-1/5">
-            <h6>{product.title}</h6>
+        <div className="productCard-container w-3/4 ms-2 rounded-2xl bg-gray-200 flex row justify-center md:w-1/5 md:h-21 m-2">
+            <h6 className="mb-0 pb-0">{product.title}</h6>
             <img className="h-1/3 w-1/3" src={product.image}></img>
-            <p>${product.price}</p>
-            <Button onClick={()=>{
+            <p className="mb-0 text-center">${product.price}</p>
+            <div className="flex justify-center h-10">
+            <button className="bg-blue-500 text-white p-2" onClick={()=>{
                handleAddProducttoCart(product)
-            }}>Add to Cart</Button>
+            }}>Add to Cart</button>
+            </div>
+
         </div>
 
     )

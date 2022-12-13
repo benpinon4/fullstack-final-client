@@ -11,6 +11,7 @@ import RegistrationPage from "./Pages/RegistrationPage";
 import { useState } from "react";
 import OrderPage from "./Pages/OrderPage";
 import ShippingBillingPage from "./Pages/ShippingBillingPage";
+import ConfirmPage from "./Pages/ConfirmationPage";
 
 
 function App() {
@@ -209,6 +210,12 @@ function App() {
           path: "/order-review",
           element: (
             <OrderPage nocompleteOrder={nocompleteOrder} shippingInfo={shippingInfo} billingInfo={billingInfo} />
+          ),
+        },
+        {
+          path: "/confirmation-page",
+          element: (
+            <ConfirmPage nocompleteOrder={nocompleteOrder} shippingInfo={shippingInfo} billingInfo={billingInfo} />
           ),
         },
       ],

@@ -27,15 +27,15 @@ const ProductsPage = (props) => {
   }, []);
 
   return (
-    <div className="flex justify-content">
+    <div className="flex justify-center">
 
-    <div className="flex row w-100">
+    <div className="flex justify-center row w-100">
 
       <div className="text-center">
            Products Page
       </div>
-      <div>
-      <div className="mx-10 w-100 sm:flex-row md:flex column  justify-center flex-wrap border-solid ">
+      {/* <div className="flex justify-center"> */}
+      <div className="flex column justify-center md:flex column justify-center flex-wrap border-solid ">
         {productList.map((product, index) => {
           return (
             <ProductCard 
@@ -45,14 +45,14 @@ const ProductsPage = (props) => {
             />
           );
         })}
-      </div>
+      {/* </div> */}
       </div>
 
       
 
       
     </div>
-    <div className="w-">
+    <div className="md:w-2/5">
       <ShoppingCartSummary cartTotal={cartTotal} shoppingCartProductList={shoppingCartProductList} />
       </div>
     </div>

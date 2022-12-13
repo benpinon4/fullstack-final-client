@@ -27,12 +27,15 @@ const NavigationBar = (props) => {
         },
       });
       const responseJSON = await response.json();
+      console.log(responseJSON)
+      if(responseJSON.success !== false){
+        setLoginStatusMessage("Logged in as");
+        setUserStatusMessage(responseJSON.verified.userData.email);
+        console.log(userStatusMessage);
+        console.log(loginStatusMessage);
+        setUserData(responseJSON.verified.userData);
+      }
 
-      setLoginStatusMessage("Logged in as");
-      setUserStatusMessage(responseJSON.verified.userData.email);
-      console.log(userStatusMessage);
-      console.log(loginStatusMessage);
-      setUserData(responseJSON.verified.userData);
     };
 
     if (auth.userToken !== null) {
@@ -42,24 +45,24 @@ const NavigationBar = (props) => {
       setLoginStatusMessage();
       setUserStatusMessage("");
     }
-  }, [auth.userToken, loginStatusMessage, userStatusMessage]);
+  }, [auth.userToken, loginStatusMessage]);
 
   return (
     // Main container for all of navbar and black header
-    <div className="w-full h-40">
-      <div className="vw-100 flex justify-end column h-1/8 bg-black text-white">
+    <div className="h-[150px]">
+      <div className="flex justify-end column h-[20%] bg-black text-white">
       <p className="mx-auto">Free Shipping On Orders Over $50</p> 
       <div className="flex column text-xs ">
-            <p>{loginStatusMessage}</p>
-            <p>{userStatusMessage}</p>
+      {loginStatusMessage === undefined && (<p>Logged Out</p>)}
+      {loginStatusMessage !== undefined && (<p>{`${loginStatusMessage}: ${userStatusMessage}`}</p>)}  
+            <p></p>
+            
 
-            {loginStatusMessage === undefined ||
-            userStatusMessage === undefined && (<p>Logged Out</p>)}
-          </div>
+            </div>
       </div>
 
-
-      <NavBar className="flex justify-content-center space-x-20 h-3/4 bg-zinc-500">
+              
+      <NavBar className="flex justify-content-center space-x-20 h-[80%] bg-zinc-500">
         <div className="hidden md:block text-center text-white w-1/6">Company Logo</div>
 
         {/* Links and Search Bar Container */}

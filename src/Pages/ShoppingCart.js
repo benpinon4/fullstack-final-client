@@ -54,13 +54,18 @@ const ShoppingCartPage = (props) => {
   };
 
   return (
-    <div className="flex column justify-center">
-      <div className="shoppingCartList-container w-3/4 flex justify-center">
-        {shoppingCartProductList.length < 1 && <h3>No Items in Cart</h3>}
+    <div className="md:flex column justify-end text-center">
+   
+      <div className="shoppingCartList-container flex justify-center ">
+      {shoppingCartProductList.length < 1 && (<div>
+              <p>Shopping Cart</p>
+              <p>Shopping Cart Empty</p>
+      </div>
+)}
 
         {shoppingCartProductList.length >= 1 && (
-          <div>
-            {" "}
+          <div className="flex row w-3/4">
+            <h5>Shopping Cart</h5>
             {shoppingCartProductList.map((product, index) => {
               return (
                 <ShoppingCartProductCard
@@ -75,8 +80,8 @@ const ShoppingCartPage = (props) => {
           </div>
         )}
       </div>
-      <div className="border-2 w-1/4  bg-gray-100">
-        <div className="border-2 mt-20 bg-white mx-2 px-2">
+      <div className="md:w-1/4 md:flex md:justify-center bg-gray-100">
+        <div className="border-2 mt-10 h-2/4 bg-white mx-2 px-2">
           <div>
             Shopping Cart Summary
           </div>

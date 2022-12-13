@@ -54,37 +54,41 @@ const ShippingBillingPage = (props) => {
             }
 
     return (
-        <div className="flex row">Shipping Page
-            <div className="shipping-info-input-container flex row text-center">Shipping Info
+        <div className="flex flex-col place-items-center max-w-[375px] min-w-full">
+            <div>
+                   <h4>Shipping Page</h4>
+            </div>
+                    Shipping Info
+            <div className="border-2 w-[375px] m-2">
                 <label>Street Address:
-                <input type="text" onChange={(e)=>{
+                <input className="border-2 w" type="text" onChange={(e)=>{
                     setStreetAddress(e.target.value)
                 }}></input>
                 </label>
                 <label>Apt/Unit #: 
-                <input type="text" onChange={(e)=>{
+                <input className="border-2" type="text" onChange={(e)=>{
                     setAptUnit(e.target.value)
                 }}></input>
                 </label>
                 <label>City:   
-                <input type="text" onChange={(e)=>{
+                <input className="border-2" type="text" onChange={(e)=>{
                     setCity(e.target.value)
                 }}></input>
                 </label>
                 <label>State: 
-                <input type="text" onChange={(e)=>{
+                <input className="border-2" type="text" onChange={(e)=>{
                     setState(e.target.value)
                 }}></input>
                 </label>
                 <label>Zip Code: 
-                <input type="text" onChange={(e)=>{
+                <input className="border-2" type="text" onChange={(e)=>{
                     setZip(e.target.value)
                 }}></input>
                 </label>
             </div>
-            <br></br>
-            <div className="shipping-info-input-container flex row text-center">Billing Info
-            <label className="text-center">Check Box if Billing Info Matches Shipping Info:
+                Billing Info
+            <div className="border-2 w-[375px] m-2">
+            <label className="">Check Box if Billing Info Matches Shipping Info:
                 <input type="checkbox" onChange={(e)=>{
                     
                     if(e.target.checked === true){
@@ -108,34 +112,34 @@ const ShippingBillingPage = (props) => {
                 }}></input>
             </label>
             <label>Street Address:
-                <input readOnly={readOnlyvar} type="text" value={billingStreetAdress} onChange={(e)=>{
+                <input readOnly={readOnlyvar} className="border-2" type="text" value={billingStreetAdress} onChange={(e)=>{
                     setBillingStreetAddress(e.target.value)
 
                 } }></input>
                 </label>
                 <label>Apt/Unit #: 
-                <input  readOnly={readOnlyvar} type="text" value={billingAptUnit} onChange={(e)=>{
+                <input  readOnly={readOnlyvar} className="border-2" type="text" value={billingAptUnit} onChange={(e)=>{
                     setBillingAptUnit(e.target.value)
                 }}></input>
                 </label>
                 <label>City:   
-                <input readOnly={readOnlyvar} type="text" value={billingCity} onChange={(e)=>{
+                <input readOnly={readOnlyvar} className="border-2" type="text" value={billingCity} onChange={(e)=>{
                     setBillingCity(e.target.value)
                 }}></input>
                 </label>
                 <label>State: 
-                <input readOnly={readOnlyvar} type="text" value={billingState} onChange={(e)=>{
+                <input readOnly={readOnlyvar} className="border-2" type="text" value={billingState} onChange={(e)=>{
                     setBillingState(e.target.value)
                 }}></input>
                 </label>
                 <label>Zip Code: 
-                <input readOnly={readOnlyvar} type="text" value={billingZip} onChange={(e)=>{
+                <input readOnly={readOnlyvar} className="border-2" type="text" value={billingZip} onChange={(e)=>{
                     setBillingZip(e.target.value)
                 }}></input>
                 </label>
             </div>
-           
-        <Button onClick={()=>{
+         <div>
+         <Button onClick={()=>{
             if(streetAdress !== ("") && city !== ("") && state !== ("") && zip !== ("") && billingStreetAdress !== ("") && billingCity !== ("")&& billingState !== ("") && billingZip !== ("")){
             setShippingInfo([{
                 streetAdress: streetAdress,
@@ -174,7 +178,11 @@ const ShippingBillingPage = (props) => {
                 // setBillingInfo([])
 
         }}}>Review Order</Button>
-        </div>
+        
+         </div>
+        
+            </div>
+            
     )
 
 }

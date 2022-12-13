@@ -43,26 +43,26 @@ const ShoppingCartProductCard = (props) => {
     // if(product.render === undefined){
         return(
             
-            <div className="shoppingListCard-container flex justify-between h-1/4 border-2">
-              <div className="">
+            <div className="shoppingListCard-container flex justify-between place-items-center mx-3 w-3/4 border-2">
+              <div className="w-1/2">
       
               <p>{product.title}</p>
             
-                    <div className="">
+                    <div className="flex">
                         <img className="h-20" src={product.image}></img> 
                     </div>
                 </div>  
-
-            <p>${product.price}</p>
+            <div className="flex place-items-center ">
+   
             
             
             <div className="itemQuantityButtonsAdjuster-container">
-            <button onClick={()=>{
+            <button className="bg-blue-500 w-5 mr-2 rounded"onClick={()=>{
                 // itemCount()
                 handleAddFromShoppingCart(product)                
             }}>+</button>
             <br></br>
-            <button onClick={()=>{
+            <button className="bg-blue-500 w-5 mr-2 rounded" onClick={()=>{
                 // if(itemQuantity < 1){
                 //     setItemQuantiy(0)
                 // }
@@ -73,11 +73,13 @@ const ShoppingCartProductCard = (props) => {
                 
             }}>-</button>
             
+            </div>  
             </div>
-            <div className="itemQuantityAdjuster-container">
-            <label>Quantity: {product.quantity}</label>
+           
+            <div className="itemQuantityAdjuster-container flex place-items-center">
+            <label className="border-2 w-8">{product.quantity}</label>
             </div>
-
+            <p className="pt-3">${(product.price*product.quantity).toFixed(2)}</p>
         </div>
     )
 
