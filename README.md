@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# My Single Page Ecomm Application Final Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## This is a mock singlepage fullstack ecom app created with the MERN stack.
 
-## Available Scripts
+### Description
 
-In the project directory, you can run:
+Welcome to my fullstack single-page ecom app. This app uses React.js as its front-end framework and Express.js as its back-end framework. The application stores its data in a MongoDB nosql server.
 
-### `npm start`
+## Tech Stack
+​
+- [Required] Node - Runtime
+- [Required] React - Client Framework
+- [Required] Express - Server Framework
+- [Required] MongoDB - Database
+- [Required] Git - Code Versioning
+- [Required] Github - Code Storage and Collaboration
+- [Required] CORS - Express CORS Library
+- [Required] bcryptJS - User Authentication
+- [Required] JsonWebToken - User Auth Tokens
+- [Suggested] Bootstrap - CSS Framework
+- [Suggested] Nodemon - Server Hot Reloading
+- [Suggested] React-Router - Client Side Routing
+- [Suggested] JSDOC - Code Comment Framework
+- [Suggested] uuidv4 - Unique ID Generator
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Application Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### User Interface
+This application utilizes React.js as its frontend framework to create an efficient single page layout with a navigation bar permanently displayed at the top of the page and the outlet diplayed underneath.
 
-### `npm test`
+The application takes a mobile first approach to its styling efforts and utilizes the tailwind.css framework to directly apply css style attributes to HTML elements by writing them into the html className(React.js) attribute directly.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### User Authentication
+The user can register their email as a username and create a password. The password will be encrypted. The user can login with username and password and will be issued a JSONwebtoken. The user can logout when they desire.
 
-### `npm run build`
+At the login page there is a link that if clicked will navigate to a new user page where a new user can register the account information.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Navigation Bar
+The application features a navigation bar permanently displayed at the top of the page. The navbar features the company logo, a search bar feature, and three icons which allows you to navigate to login, logout, and navigative to your shopping cart.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Products Page
+This application features a product page which fetches the product list from a fake products API and maps out the response onto the products page in product cards. The product cards feature an add to cart button where users can click and add the associated product to the shopping cart.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The products page also features a shopping cart summary displayed to the right of the product cards in medium sized screens and hides the shopping cart summary when the screen size is smaller than medium. 
 
-### `npm run eject`
+### Shopping Cart
+Once the user has completed their shopping they click on the proceed to checkout from their cart summary or click the shopping cart icon on the navbar to navigate to the shopping cart review page. On this page the user can adjust the quantities of each items in their shopping cart which will be reflected in the cart total.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Order-Review & Confirmation
+After the user has completed the reivew of their shopping cart. They click proceed to checkout button at the bottom of the shopping cart review page and they are directed to the shipping and details page. The user completes and ssaves their shipping and billing information and clicks another proceed to checkout button and navigates an dorder summary page to review the final order summary.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Once complete the user then clicks the submit order button and the order is sent to the database to both be stored in an order collection and to the users account in an order history. 
