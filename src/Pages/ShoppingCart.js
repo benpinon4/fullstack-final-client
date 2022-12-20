@@ -54,9 +54,9 @@ const ShoppingCartPage = (props) => {
   };
 
   return (
-    <div className="md:flex column justify-end text-center">
+    <div className="md:flex h-100 justify-end text-center">
    
-      <div className="shoppingCartList-container flex justify-center ">
+      <div className="shoppingCartList-container flex justify-center">
       {shoppingCartProductList.length < 1 && (<div>
               <p>Shopping Cart</p>
               <p>Shopping Cart Empty</p>
@@ -80,7 +80,7 @@ const ShoppingCartPage = (props) => {
           </div>
         )}
       </div>
-      <div className="md:w-1/4 md:flex md:justify-center bg-gray-100">
+      <div className="md:w-1/4 md:flex md:justify-center vh-100 bg-gray-100">
         <div className="border-2 mt-10 h-2/4 bg-white mx-2 px-2">
           <div>
             Shopping Cart Summary
