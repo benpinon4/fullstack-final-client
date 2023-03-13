@@ -56,7 +56,7 @@ const ShoppingCartPage = (props) => {
   return (
     <div className="md:flex h-100 justify-end text-center">
    
-      <div className="shoppingCartList-container flex justify-center">
+      <div className="flex justify-center">
       {shoppingCartProductList.length < 1 && (<div>
               <p>Shopping Cart</p>
               <p>Shopping Cart Empty</p>
