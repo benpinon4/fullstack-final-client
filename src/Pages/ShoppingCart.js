@@ -54,7 +54,7 @@ const ShoppingCartPage = (props) => {
   };
 
   return (
-    <div className="md:flex h-100 justify-end text-center">
+    <div className="md:flex h-100 justify-center text-center">
    
       <div className="flex justify-center">
       {shoppingCartProductList.length < 1 && (<div>
