@@ -3,7 +3,7 @@ import { Link, UNSAFE_DataRouterStateContext } from "react-router-dom";
 import { useAuth } from "../Hooks/Auth";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {NavBar} from "react-bootstrap/NavBar";
+import {Navbar} from "react-bootstrap/NavBar";
 import { AiOutlineShoppingCart, AiTwotoneShopping } from "react-icons/ai";
 import { RiAccountBoxFill } from "react-icons/ri";
 import { BsCartFill } from "react-icons/bs";
@@ -63,7 +63,7 @@ const NavigationBar = (props) => {
   </div>
 
          
-  <NavBar className="flex flex-row h-[80%] bg-zinc-500">
+  <Navbar className="flex flex-row h-[80%] bg-zinc-500">
     <div className="hidden md:block m-3 place-items-center w-20 text-center text-white"><img src={shoppingLogo}></img></div>
 
       {/* fullstack-final-client/src/Images/fake-logo-company-small.png */}
@@ -135,7 +135,7 @@ const NavigationBar = (props) => {
 
  
     </div>
-  </NavBar>
+  </Navbar>
 </div>
   );
 };
