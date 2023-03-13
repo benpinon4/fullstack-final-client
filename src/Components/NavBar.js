@@ -3,7 +3,7 @@ import { Link, UNSAFE_DataRouterStateContext } from "react-router-dom";
 import { useAuth } from "../Hooks/Auth";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NavBar from "react-bootstrap/NavBar";
+import {NavBar} from "react-bootstrap/NavBar";
 import { AiOutlineShoppingCart, AiTwotoneShopping } from "react-icons/ai";
 import { RiAccountBoxFill } from "react-icons/ri";
 import { BsCartFill } from "react-icons/bs";
